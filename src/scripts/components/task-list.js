@@ -18,6 +18,10 @@ class TaskList {
     };
     this.data.push(mock);
     this.data.push(mock2);
+    this.$http.get('http://localhost:3000/task/all')
+      .success(function (data) {
+        console.log(data);
+      })
   }
 
   taskDone(taskId) {
