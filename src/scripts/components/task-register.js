@@ -16,11 +16,14 @@ class TaskRegister {
     let param = {
       header: this.taskName
     };
+    console.log(param);
     this.$http.post('http://localhost:3000/task/new', param)
       .success((data)=> {
         console.log(data);
         this.taskName = '';
-      })
+      }).error((error)=> {
+      console.log(error);
+    });
   }
 }
 
