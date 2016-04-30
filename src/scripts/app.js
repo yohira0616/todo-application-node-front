@@ -1,4 +1,4 @@
-angular.module('app', []);
+angular.module('app', ['ui.bootstrap']);
 
 angular.module('app')
   .directive('myTemplate', function () {

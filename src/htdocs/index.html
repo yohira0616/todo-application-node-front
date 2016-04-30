@@ -2,16 +2,41 @@
 <html ng-app="app">
 <head>
     <meta charset="UTF-8">
-    <title>Angular Awesome Boilerplate</title>
+    <title>Sample TODO application</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-<my-template></my-template>
-<div ng-controller="SampleController">
-    <p>{{text}}</p>
-</div>
+<div class="container">
+    <my-template></my-template>
+    <div ng-controller="SampleController">
+        <p>{{text}}</p>
+    </div>
 
-<script src="lib/angular/angular.min.js"></script>
+    <app-task-register></app-task-register>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>タスク名</th>
+            <th>ID</th>
+            <th>完了</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>sample</td>
+            <td>-1</td>
+            <td><button class="btn btn-default">完了</button> </td>
+        </tr>
+
+        </tbody>
+
+
+    </table>
+</div>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-bootstrap/ui-bootstrap.js"></script>
 <script src="js/bundle.min.js"></script>
 <script src="js/templates.js"></script>
 </body>
