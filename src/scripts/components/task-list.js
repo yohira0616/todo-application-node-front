@@ -1,26 +1,9 @@
 class TaskList {
 
-  constructor($http) {
+  constructor($http, $scope) {
     this.$http = $http;
-    this.data = [];
-
-    this.initialize();
+    this.data = $scope.appTasks;
   };
-
-  initialize() {
-    this.data = [];
-    this.$http.get('http://localhost:3000/task/all')
-      .success((tasks)=> {
-        tasks.forEach((task)=> {
-          this.data.push({
-            taskId: task.id,
-            taskName: task.header
-          });
-        });
-      }).error((error)=> {
-      console.log(error);
-    })
-  }
 
   taskDone(taskId) {
     let param = {
@@ -28,7 +11,11 @@ class TaskList {
     };
     this.$http.post('http://localhost:3000/task/done', param)
       .success((result)=> {
-        this.initialize();
+        this.data.forEach((item, index, ary)=> {
+          if (item.taskId === taskId) {
+            ary.splice(index, 1);
+          }
+        });
       }).error((error)=> {
       console.log(error);
     });
@@ -43,6 +30,8 @@ angular.module('app')
       controller: TaskList,
       controllerAs: 'taskList',
       templateUrl: 'task-list.html',
-      scope: {}
+      scope: {
+        'appTasks': '='
+      }
     }
   });

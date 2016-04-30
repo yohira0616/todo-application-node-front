@@ -3,6 +3,23 @@ class TaskRegister {
   constructor($http) {
     this.taskName = '';
     this.$http = $http;
+    this.data = [];
+    this.initialize();
+  }
+
+  initialize() {
+    this.data = [];
+    this.$http.get('http://localhost:3000/task/all')
+      .success((tasks)=> {
+        tasks.forEach((task)=> {
+          this.data.push({
+            taskId: task.id,
+            taskName: task.header
+          });
+        });
+      }).error((error)=> {
+      console.log(error);
+    })
   }
 
   doRegister($event) {
@@ -21,6 +38,10 @@ class TaskRegister {
       .success((data)=> {
         console.log(data);
         this.taskName = '';
+        this.data.push({
+          taskId: data.id,
+          taskName: data.header
+        })
       }).error((error)=> {
       console.log(error);
     });
