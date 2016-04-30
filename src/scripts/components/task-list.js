@@ -21,6 +21,11 @@ class TaskList {
   }
 
   taskDone(taskId) {
+    let val=this.data.find(function (elem, idx, ary) {
+      return elem.taskId = taskId;
+    });
+    console.log(val);
+
     let param = {
       id: taskId
     };
@@ -28,7 +33,6 @@ class TaskList {
       .success((data)=> {
         console.log(data);
       });
-    console.log(taskId + '完了');
   }
 }
 

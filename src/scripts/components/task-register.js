@@ -7,8 +7,6 @@ class TaskRegister {
   }
 
   doRegister() {
-    console.log(this.taskName);
-    console.log('登録されました');
     let param = {
       header: this.taskName
     };
