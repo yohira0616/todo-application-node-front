@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container">
-    <app-title></app-title>
+<div class="container" ng-controller="appTopController as topCtrl">
+    <app-title app-title="Sample TODO Application"></app-title>
     <app-task-register></app-task-register>
 
     <app-task-list></app-task-list>

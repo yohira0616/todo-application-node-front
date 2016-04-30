@@ -6,3 +6,7 @@ h1 {
   @include myMixin;
   text-align: center;
 }
+
+#app-task-input{
+  margin-bottom: 10px;
+}

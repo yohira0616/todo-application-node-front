@@ -1,16 +1,14 @@
-<table class="table table-bordered">
+<table class="table table-bordered" id="app-task-table">
     <thead>
     <tr>
-        <th>タスク名</th>
-        <th>ID</th>
+        <th width="80%">タスク名</th>
         <th>完了</th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="task in taskList.data">
         <td>{{task.taskName}}</td>
-        <td>{{task.taskId}}</td>
-        <td><button class="btn btn-default" ng-click="taskList.taskDone(task.taskId)">完了</button> </td>
+        <td><button class="btn btn-success" ng-click="taskList.taskDone(task.taskId)">完了</button> </td>
     </tr>
 
     </tbody>

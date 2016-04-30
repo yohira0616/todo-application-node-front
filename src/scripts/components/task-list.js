@@ -8,6 +8,7 @@ class TaskList {
   };
 
   initialize() {
+    this.data = [];
     this.$http.get('http://localhost:3000/task/all')
       .success((tasks)=> {
         tasks.forEach((task)=> {
@@ -16,23 +17,21 @@ class TaskList {
             taskName: task.header
           });
         });
-        console.log(tasks);
-      })
+      }).error((error)=> {
+      console.log(error);
+    })
   }
 
   taskDone(taskId) {
-    let val = this.data.find(function (elem, idx, ary) {
-      return elem.taskId = taskId;
-    });
-    console.log(val);
-
     let param = {
       id: taskId
     };
     this.$http.post('http://localhost:3000/task/done', param)
-      .success((data)=> {
-        console.log(data);
-      });
+      .success((result)=> {
+        this.initialize();
+      }).error((error)=> {
+      console.log(error);
+    });
   }
 }
 
