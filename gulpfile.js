@@ -61,6 +61,7 @@ gulp.task('htdocs', function () {
 
 gulp.task('server:init', function () {
   browser.init({
+    port: 2000,
     server: {
       baseDir: "./public/"
     }
