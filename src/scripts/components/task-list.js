@@ -21,7 +21,7 @@ class TaskList {
   }
 
   taskDone(taskId) {
-    let val=this.data.find(function (elem, idx, ary) {
+    let val = this.data.find(function (elem, idx, ary) {
       return elem.taskId = taskId;
     });
     console.log(val);
