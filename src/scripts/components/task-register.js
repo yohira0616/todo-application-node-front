@@ -19,6 +19,7 @@ angular.module('app')
       restrict: 'E',
       templateUrl: 'task-register.html',
       controller: TaskRegister,
-      controllerAs: 'register'
+      controllerAs: 'register',
+      scope:{}
     }
   });

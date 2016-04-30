@@ -7,9 +7,3 @@ angular.module('app')
       templateUrl: 'my-tmpl.html'
     }
   });
-
-angular.module('app')
-  .controller('SampleController', function ($scope) {
-    var timeStr = new Date().toDateString();
-    $scope.text = `Hey! time is ${timeStr}`;
-  });
