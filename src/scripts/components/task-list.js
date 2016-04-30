@@ -1,8 +1,9 @@
 class TaskList {
 
-  constructor($http, $scope) {
+  constructor($http, $scope, growl) {
     this.$http = $http;
     this.data = $scope.appTasks;
+    this.growl = growl;
   };
 
   taskDone(taskId) {
@@ -16,6 +17,7 @@ class TaskList {
             ary.splice(index, 1);
           }
         });
+        this.growl.success('タスクを完了しました',{})
       }).error((error)=> {
       console.log(error);
     });

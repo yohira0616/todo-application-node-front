@@ -1,10 +1,11 @@
 class TaskRegister {
 
-  constructor($http) {
+  constructor($http, growl) {
     this.taskName = '';
     this.$http = $http;
     this.data = [];
     this.initialize();
+    this.growl = growl;
   }
 
   initialize() {
@@ -41,7 +42,8 @@ class TaskRegister {
         this.data.push({
           taskId: data.id,
           taskName: data.header
-        })
+        });
+        this.growl.success('タスクを登録しました',{});
       }).error((error)=> {
       console.log(error);
     });

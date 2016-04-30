@@ -1,7 +1,6 @@
-angular.module('app', ['ui.bootstrap']);
+angular.module('app', ['ui.bootstrap', 'angular-growl']);
 
-//TopLevel Controller
 angular.module('app')
-  .controller('appTopController', function ($scope, $http) {
-
+  .config(function (growlProvider) {
+    growlProvider.globalTimeToLive(3000);
   });
