@@ -8,23 +8,26 @@ class TaskList {
   };
 
   initialize() {
-    let mock = {
-      taskId: -1,
-      taskName: 'sample'
-    };
-    let mock2 = {
-      taskId: 0,
-      taskName: 'NullTask'
-    };
-    this.data.push(mock);
-    this.data.push(mock2);
     this.$http.get('http://localhost:3000/task/all')
-      .success(function (data) {
-        console.log(data);
+      .success((tasks)=> {
+        tasks.forEach((task)=> {
+          this.data.push({
+            taskId: task.id,
+            taskName: task.header
+          });
+        });
+        console.log(tasks);
       })
   }
 
   taskDone(taskId) {
+    let param = {
+      id: taskId
+    };
+    this.$http.post('http://localhost:3000/task/done', param)
+      .success((data)=> {
+        console.log(data);
+      });
     console.log(taskId + '完了');
   }
 }
